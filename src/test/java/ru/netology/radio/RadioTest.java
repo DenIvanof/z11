@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
-    Radio rad = new Radio();
+    Radio rad = new Radio(30);
 
     @Test
     public void upVolume() {
@@ -52,16 +52,16 @@ public class RadioTest {
 
     @Test
     public void setStation() {
-        rad.setRadioStationNumber(8);
+        rad.setRadioStationNumber(10);
 
-        int expected = 8;
+        int expected = 10;
         int actual = rad.getRadioStationNumber();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void setStationMoreMax() {
-        rad.setRadioStationNumber(10);
+        rad.setRadioStationNumber(30);
 
         int expected = 0;
         int actual = rad.getRadioStationNumber();
@@ -79,17 +79,17 @@ public class RadioTest {
 
     @Test
     public void nextStation() {
-        rad.setRadioStationNumber(5);
+        rad.setRadioStationNumber(28);
         rad.increaseRadioStation();
 
-        int expected = 6;
+        int expected = 29;
         int actual = rad.getRadioStationNumber();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void nextStationAfterMax() {
-        rad.setRadioStationNumber(9);
+        rad.setRadioStationNumber(29);
         rad.increaseRadioStation();
 
         int expected = 0;
@@ -99,10 +99,10 @@ public class RadioTest {
 
     @Test
     public void prevStation() {
-        rad.setRadioStationNumber(5);
+        rad.setRadioStationNumber(20);
         rad.decreaseRadioStation();
 
-        int expected = 4;
+        int expected = 19;
         int actual = rad.getRadioStationNumber();
         Assertions.assertEquals(expected, actual);
     }
@@ -112,7 +112,7 @@ public class RadioTest {
         rad.setRadioStationNumber(0);
         rad.decreaseRadioStation();
 
-        int expected = 9;
+        int expected = 29;
         int actual = rad.getRadioStationNumber();
         Assertions.assertEquals(expected, actual);
     }
